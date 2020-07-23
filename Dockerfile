@@ -33,7 +33,8 @@ RUN set -x && \
   mkdir /app/.ansible && \
   touch /app/.ansible/ansible.cfg && \
   ln -s /app/.ansible/ansible.cfg /app/.ansible.cfg && \
-  chown -R app:app /app
+  chown -R app:app /app && \
+  mkdir /entrypoint.d
 
 WORKDIR /app
 

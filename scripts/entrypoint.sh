@@ -16,4 +16,11 @@ stop() {
 test -S "${SSH_AUTH_SOCK}" && rm -rf "${SSH_AUTH_SOCK}"
 echo "start ssh-agent"
 eval $(/usr/bin/ssh-agent -s -a "${SSH_AUTH_SOCK}" 2>&1) >/dev/null 2>&1
+
+find /entrypoint.d/ -mindepth 1 -maxdepth 1 -type f -name '*.sh' -print -quit 2>/dev/null | \
+  sort -n | while read -r f; do
+  echo "launching ${f}"
+  ${f}
+done
+
 test -n "${SSH_AGENT_PID}" -a -S "${SSH_AUTH_SOCK}" && "${@}"
