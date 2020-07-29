@@ -15,9 +15,9 @@ RUN set -x && \
     bzip2-dev coreutils dpkg-dev dpkg expat-dev findutils gcc gdbm-dev libc-dev libffi-dev \
     libnsl-dev libtirpc-dev linux-headers make ncurses-dev openssl-dev pax-utils readline-dev \
     sqlite-dev tcl-dev tk tk-dev util-linux-dev xz-dev zlib-dev && \
-  pip --no-cache-dir install ansible==${ANSIBLE_VERSION} && \
+  pip --no-cache-dir --disable-pip-version-check install ansible==${ANSIBLE_VERSION} && \
   sed -i '/^ansible\([^-]\)/d' /tmp/requirements.txt && \
-  pip --no-cache-dir install -r /tmp/requirements.txt && \
+  pip --no-cache-dir --disable-pip-version-check install -r /tmp/requirements.txt && \
   find /usr/local -type f -executable -not \( -name '*tkinter*' \) \
     -exec scanelf --needed --nobanner --format '%n#p' '{}' ';' | tr ',' '\n' | sort -u | \
     awk 'system("[ -e /usr/local/lib/" $1 " ]") == 0 { next } { print "so:" $1 }' | \
