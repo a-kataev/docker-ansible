@@ -4,7 +4,7 @@ FROM python:${PYTHON_VERSION}-alpine
 
 LABEL maintainer="Alex Kataev <dlyavsehpisem@gmail.com>"
 
-ARG ANSIBLE_VERSION=2.8.13
+ARG ANSIBLE_VERSION=2.8.14
 
 ENV ANSIBLE_VERSION=${ANSIBLE_VERSION}
 
