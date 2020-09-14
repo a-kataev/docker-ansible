@@ -24,10 +24,10 @@ RUN set -x && \
     xargs -rt apk add --no-cache --virtual .python-rundeps && \
   apk del --no-cache .build-deps && \
   find /usr/local -not -path '*/ansible/*' -depth \( \
-      \( -type d -a \( -name test -o -name tests \) \) -o \
-      \( -type f -a \( -name '*.pyc' -o -name '*.pyo' \) \) \
+      \( -type d -a \( -name test -o -name tests -o -name idle_test \) \) -o \
+      \( -type f -a \( -name '*.pyc' -o -name '*.pyo' -o -name '*.a' \) \) \
     \) -exec rm -rf '{}' + && \
-  apk add --no-cache su-exec openssh-client curl ca-certificates jq tree && \
+  apk add --no-cache su-exec openssh-client curl jq tree zip && \
   rm -rf /root/.cache /tmp/* && \
   adduser -h /app -s /bin/sh -D -u 1000 app && \
   mkdir /app/.ansible && \
