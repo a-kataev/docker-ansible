@@ -33,8 +33,10 @@ RUN set -x && \
   rm -rf /root/.cache /tmp/* && \
   adduser -h /app -s /bin/sh -D -u 1000 app && \
   mkdir /app/.ansible && \
+  ln -s /app/.ansible /root/.ansible && \
   touch /app/.ansible/ansible.cfg && \
   ln -s /app/.ansible/ansible.cfg /app/.ansible.cfg && \
+  ln -s /app/.ansible/ansible.cfg /root/.ansible.cfg && \
   chown -R app:app /app && \
   mkdir /entrypoint.d
 
