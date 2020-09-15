@@ -1,2 +1,2 @@
-mitogen == 0.2.9
+mitogen==0.2.9
 ansible-lint

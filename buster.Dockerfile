@@ -25,6 +25,8 @@ RUN set -x && \
   apt-get install -y --no-install-recommends openssh-client curl jq tree unzip procps net-tools vim-tiny less && \
   pip --no-cache-dir --disable-pip-version-check install ansible==${ANSIBLE_VERSION} && \
   sed -i '/^ansible\([^-]\)/d' /tmp/requirements.txt && \
+  ((ansible --version | grep -oEq 'ansible 2.[3-8].' && python --version | grep -oEq '3.[6-7]') || \
+    sed -i '/^mitogen/d' /tmp/requirements.txt) && \
   pip --no-cache-dir --disable-pip-version-check install -r /tmp/requirements.txt && \
   find /usr/local -not -path '*/ansible/*' -depth \( \
       \( -type d -a \( -name test -o -name tests -o -name idle_test \) \) -o \
