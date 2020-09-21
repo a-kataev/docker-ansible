@@ -29,7 +29,7 @@ RUN set -x && \
       \( -type d -a \( -name test -o -name tests -o -name idle_test \) \) -o \
       \( -type f -a \( -name '*.pyc' -o -name '*.pyo' -o -name '*.a' \) \) \
     \) -exec rm -rf '{}' + && \
-  apk add --no-cache su-exec openssh-client curl jq tree zip && \
+  apk add --no-cache su-exec openssh-client curl jq tree zip git rsync && \
   rm -rf /root/.cache /tmp/* && \
   adduser -h /app -s /bin/sh -D -u 1000 app && \
   mkdir /app/.ansible && \

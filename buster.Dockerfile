@@ -22,7 +22,7 @@ COPY requirements.txt /tmp
 
 RUN set -x && \
   apt-get update && \
-  apt-get install -y --no-install-recommends openssh-client curl jq tree unzip procps net-tools vim-tiny less && \
+  apt-get install -y --no-install-recommends openssh-client curl jq tree unzip procps net-tools vim-tiny less git rsync && \
   pip --no-cache-dir --disable-pip-version-check install ansible==${ANSIBLE_VERSION} && \
   sed -i '/^ansible\([^-]\)/d' /tmp/requirements.txt && \
   ((ansible --version | grep -oEq 'ansible 2.[3-8].' && python --version | grep -oEq '3.[6-7]') || \
