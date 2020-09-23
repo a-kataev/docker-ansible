@@ -35,6 +35,7 @@ RUN set -x && \
   rm -rf /root/.cache /tmp/* /var/lib/apt/lists/* && \
   useradd -m -d /app -s /bin/sh -u 1000 app && \
   mkdir /app/.ansible && \
+  rm -rf /root/.ansible && \
   ln -s /app/.ansible /root/.ansible && \
   touch /app/.ansible/ansible.cfg && \
   ln -s /app/.ansible/ansible.cfg /app/.ansible.cfg && \
