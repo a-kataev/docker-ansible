@@ -12,7 +12,7 @@ To build with docker use `--build-arg` and set `PYTHON_VERSION` and `ANSIBLE_VER
 
 ### Support `requirements.txt` when building images
 
-Package `ansible` is ingnored always.
+Package `ansible` is ignored always.
 
 Package `mitogen` is ignored if versions `ansible` or `python` are not supported ([link](https://mitogen.networkgenomics.com/ansible_detailed.html#noteworthy-differences)).
 
@@ -49,7 +49,7 @@ $ git clone git@github.com:a-kataev/docker-ansible.git
 $ cd docker-ansible
 ```
 
-Edit `requirements.txt` and create a new script
+Edit `requirements.txt`
 
 ```shell
 $ echo "pyjwt" >> requirements.txt
@@ -79,7 +79,7 @@ ssh-add -L
 EOF
 ```
 
-Create a simple playbook, host file and config
+Create a simple playbook, hosts file and config
 
 ```shell
 $ mkdir ansible
@@ -110,34 +110,34 @@ $ docker run --name ansible --rm \
 start ssh-agent
 launching /entrypoint.d/00-generate-ssh-key.sh
 Identity added: /app/.ssh/new (/app/.ssh/new)
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBcHpys/Rs1JehOQ5oI2O6J/5N6ic9izhc8bbZ5de2/dNlXhhbP75l3XxlhKIPkF
-jAL8f85Kq0xdUYDP5bZ9DNMYOQiGyBB+UFL7E+55mbu1ebIDJvvtpTe1KGToXI2NYjUodSm/eNk7K4L936ZqWgBICKmHm/zYZ5pv2y
-VdqlWuC5Tu4nLvCYVfV+QoYi9vyQ4sfpKkqVv/impHYsCbUIjZwvM9DdrEZEzDVRzgnZ9MFRYHV/p5KGZ5w7bxTtU3ciWPDU5AQJb1
-QJlXHHMmRjV4P4a7XZF4Dy7wbXG4xFJyseZVtOP
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBcHpys/Rs1JehOQ5oI2O6J/5N6ic9izhc8bbZ5de2/dNlXhhbP75l3X
+xlhKIPkFjAL8f85Kq0xdUYDP5bZ9DNMYOQiGyBB+UFL7E+55mbu1ebIDJvvtpTe1KGToXI2NYjUodSm/eNk7K4L936ZqWg
+BICKmHm/zYZ5pv2yVdqlWuC5Tu4nLvCYVfV+QoYi9vyQ4sfpKkqVv/impHYsCbUIjZwvM9DdrEZEzDVRzgnZ9MFRYHV/p5
+KGZ5w7bxTtU3ciWPDU5AQJb1QJlXHHMmRjV4P4a7XZF4Dy7wbXG4xFJyseZVtOP
 AxxlXK6ACh+p+/AZQxf69InYh8mk8mVpQiX /app/.ssh/new
 $ ansible --version
 ansible 2.9.13
   config file = /app/.ansible.cfg
-  configured module search path = ['/app/.ansible/plugins/modules', '/usr/share/ansible/plugins/module
-s']
+  configured module search path = ['/app/.ansible/plugins/modules', '/usr/share/ansible/plugin
+s/modules']
   ansible python module location = /usr/local/lib/python3.8/site-packages/ansible
   executable location = /usr/local/bin/ansible
   python version = 3.8.5 (default, Sep 10 2020, 16:58:22) [GCC 8.3.0]
 $ ansible-playbook .ansible/playbook.yml
 
-PLAY [localhost] *************************************************************************************
+PLAY [localhost] *****************************************************************************
 
-TASK [Gathering Facts] *******************************************************************************
+TASK [Gathering Facts] ***********************************************************************
 ok: [localhost]
 
-TASK [debug] *****************************************************************************************
+TASK [debug] *********************************************************************************
 ok: [localhost] => {
     "ansible_python_version": "3.8.5"
 }
 
-PLAY RECAP *******************************************************************************************
-localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0 
-   ignored=0
+PLAY RECAP ***********************************************************************************
+localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    re
+scued=0    ignored=0
 
 $ exit
 ```
