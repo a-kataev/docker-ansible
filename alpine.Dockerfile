@@ -17,7 +17,7 @@ RUN set -x && \
     sqlite-dev tcl-dev tk tk-dev util-linux-dev xz-dev zlib-dev && \
   pip --no-cache-dir --disable-pip-version-check install ansible==${ANSIBLE_VERSION} && \
   sed -i '/^ansible\([^-]\)/d' /tmp/requirements.txt && \
-  ((ansible --version | grep -oEq 'ansible 2.[3-8].' && python --version | grep -oEq '3.[6-7]') || \
+  ((ansible --version | grep -oEq 'ansible 2.[3-9].' && python --version | grep -oEq '3.[6-7]') || \
     sed -i '/^mitogen/d' /tmp/requirements.txt) && \
   pip --no-cache-dir --disable-pip-version-check install -r /tmp/requirements.txt && \
   find /usr/local -type f -executable -not \( -name '*tkinter*' \) \
